@@ -55,18 +55,20 @@ namespace InsightQuizzer.Core
                 var pastMatch = storedResult.Where(kvp => kvp.Value);
 
                 var keyValuePairs = pastMatch as KeyValuePair<string, bool>[] ?? pastMatch.ToArray();
-                bool wasOK = false;
+                bool wasFound = false;
                 bool wasSolutionKnown = false;
+                string maCode = string.Empty;
 
                 if (keyValuePairs.Any())
                 {
-                    wasOK = q.Resolve(keyValuePairs.First().Key);
+                    wasFound = q.Resolve(keyValuePairs.First().Key);
 
-                    if (!wasOK)
+                    if (!wasFound)
                     {
                         // Debugger.Break();
                     }
                     wasSolutionKnown = true;
+                    maCode = keyValuePairs.FirstOrDefault().Key;
                 }
                 else
                 {
@@ -78,19 +80,23 @@ namespace InsightQuizzer.Core
 
                     var selected = possibleAnswers[random];
 
-                    wasOK = q.Resolve(selected);
+                    wasFound = q.Resolve(selected);
 
-                    storedResult.Add(selected, wasOK);
+                    storedResult.Add(selected, wasFound);
+                    maCode = selected;
                 }
 
-                OnQuestionResolved(new QuestionResolvedEventArgs()
+                if (wasFound)
                 {
-                    EmpCode = keyValuePairs.FirstOrDefault().Key,
-                    WasEmptKnown = isNew,
-                    WasSolutionKnown = wasSolutionKnown,
-                    WasSuccessful = wasOK,
-                    Image = q.Thumb
-                });
+                    OnQuestionResolved(new QuestionResolvedEventArgs()
+                    {
+                        EmpCode = maCode,
+                        WasEmptKnown = isNew,
+                        WasSolutionKnown = wasSolutionKnown,
+                        WasSuccessful = true,
+                        Image = q.Thumb
+                    });
+                }
 
                 OnProgressChanged(new ProgressChangedEventArgs()
                 {
