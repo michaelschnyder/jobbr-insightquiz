@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using log4net;
 
 namespace InsightQuizzer.Core
@@ -26,6 +27,9 @@ namespace InsightQuizzer.Core
         {
             if (args.WasSuccessful)
             {
+                // Storage image
+                File.WriteAllBytes($"{args.EmpCode}.jpg", args.Image.ToArray());
+
                 if (!args.WasEmptKnown)
                 {
                     Logger.Info("Whohuu. Found the employee in the first shot!");
