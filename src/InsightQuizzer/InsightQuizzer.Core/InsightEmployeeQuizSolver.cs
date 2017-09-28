@@ -1,17 +1,15 @@
-﻿using System;
-using log4net;
-using log4net.Core;
+﻿using log4net;
 
 namespace InsightQuizzer.Core
 {
-    public class BackgroundResolver
+    public class InsightEmployeeQuizSolver
     {
         private static int MaxResults = 10;
 
-        private static ILog Logger = LogManager.GetLogger(nameof(BackgroundResolver));
+        private static ILog Logger = LogManager.GetLogger(nameof(InsightEmployeeQuizSolver));
         private QuizRobot robot;
 
-        public BackgroundResolver()
+        public InsightEmployeeQuizSolver()
         {
             this.robot = new QuizRobot();
 
@@ -58,11 +56,9 @@ namespace InsightQuizzer.Core
             Logger.Debug("Got a new, yet unknown employee!");
         }
 
-        public void Run()
+        public void Start()
         {
-            this.robot.Resolve(MaxResults);
-
-
+            this.robot.AnswerQuestions(MaxResults);
         }
     }
 }

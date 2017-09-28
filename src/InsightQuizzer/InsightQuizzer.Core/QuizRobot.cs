@@ -12,7 +12,7 @@ namespace InsightQuizzer.Core
         public event EventHandler<ReturningEmployeeEventArgs> KnownEmployee; 
         public event EventHandler<QuestionResolvedEventArgs> QuestionResolved; 
 
-        public void Resolve(int limitMaxMatches = 10)
+        public void AnswerQuestions(int limitMaxMatches = 10)
         {
             var matches = new Dictionary<string, Dictionary<string, bool>>();
 

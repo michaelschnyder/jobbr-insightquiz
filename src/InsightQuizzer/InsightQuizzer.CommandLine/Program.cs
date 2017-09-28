@@ -14,9 +14,9 @@ namespace InsightQuizzer.CommandLine
         {
             XmlConfigurator.Configure();
 
-            var solver = new BackgroundResolver();
+            var solver = new InsightEmployeeQuizSolver();
 
-            solver.Run();
+            solver.Start();
         }
     }
 }

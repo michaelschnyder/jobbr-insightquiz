@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BackgroundResolver.cs" />
+    <Compile Include="InsightEmployeeQuizSolver.cs" />
     <Compile Include="Model\AnswerDto.cs" />
     <Compile Include="Model\ChoiceDto.cs" />
     <Compile Include="Quiz.cs" />
