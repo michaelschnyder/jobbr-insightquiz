@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsightQuizzer.CommandLine", "InsightQuizzer.CommandLine\InsightQuizzer.CommandLine.csproj", "{A39E440C-353C-43C8-BF05-D692BB857CB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsightQuizzer.Core", "InsightQuizzer.Core\InsightQuizzer.Core.csproj", "{8CC5522E-B0EC-4133-A26E-757023E77C79}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A39E440C-353C-43C8-BF05-D692BB857CB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A39E440C-353C-43C8-BF05-D692BB857CB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A39E440C-353C-43C8-BF05-D692BB857CB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A39E440C-353C-43C8-BF05-D692BB857CB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CC5522E-B0EC-4133-A26E-757023E77C79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CC5522E-B0EC-4133-A26E-757023E77C79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CC5522E-B0EC-4133-A26E-757023E77C79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CC5522E-B0EC-4133-A26E-757023E77C79}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {32287C7B-1B06-4E99-8AC0-0F9680A9DC55}
+	EndGlobalSection
+EndGlobal
