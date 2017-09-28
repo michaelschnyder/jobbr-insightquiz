@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -45,5 +46,7 @@ namespace InsightQuizzer.Core
 
         public byte[] ThumbHash =>
             new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(this.questionDto.UserThumb));
+
+        public MemoryStream Thumb => new MemoryStream(Encoding.UTF8.GetBytes(this.questionDto.UserThumb));
     }
 }

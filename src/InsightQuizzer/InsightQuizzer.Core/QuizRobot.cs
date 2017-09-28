@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using InsightQuizzer.Core.InsightQuiz;
@@ -10,7 +11,8 @@ namespace InsightQuizzer.Core
     {
         public event EventHandler<UnknownEmployeeEventArgs> NewEmployee; 
         public event EventHandler<ReturningEmployeeEventArgs> KnownEmployee; 
-        public event EventHandler<QuestionResolvedEventArgs> QuestionResolved; 
+        public event EventHandler<QuestionResolvedEventArgs> QuestionResolved;
+        public event EventHandler<ProgressChangedEventArgs> ProgressChanged;
 
         public void AnswerQuestions(int limitMaxMatches = 10)
         {
@@ -53,22 +55,18 @@ namespace InsightQuizzer.Core
                 var pastMatch = storedResult.Where(kvp => kvp.Value);
 
                 var keyValuePairs = pastMatch as KeyValuePair<string, bool>[] ?? pastMatch.ToArray();
+                bool wasOK = false;
+                bool wasSolutionKnown = false;
+
                 if (keyValuePairs.Any())
                 {
-                    var wasOK = q.Resolve(keyValuePairs.First().Key);
+                    wasOK = q.Resolve(keyValuePairs.First().Key);
 
                     if (!wasOK)
                     {
                         // Debugger.Break();
                     }
-
-                    OnQuestionResolved(new QuestionResolvedEventArgs()
-                    {
-                        EmpCode = keyValuePairs.First().Key,
-                        WasEmptKnown = true,
-                        WasSolutionKnown = true,
-                        WasSuccessful = wasOK
-                    });
+                    wasSolutionKnown = true;
                 }
                 else
                 {
@@ -80,18 +78,24 @@ namespace InsightQuizzer.Core
 
                     var selected = possibleAnswers[random];
 
-                    var ok = q.Resolve(selected);
+                    wasOK = q.Resolve(selected);
 
-                    storedResult.Add(selected, ok);
-
-                    OnQuestionResolved(new QuestionResolvedEventArgs()
-                    {
-                        EmpCode = keyValuePairs.FirstOrDefault().Key,
-                        WasEmptKnown = isNew,
-                        WasSolutionKnown = false,
-                        WasSuccessful = ok
-                    });
+                    storedResult.Add(selected, wasOK);
                 }
+
+                OnQuestionResolved(new QuestionResolvedEventArgs()
+                {
+                    EmpCode = keyValuePairs.FirstOrDefault().Key,
+                    WasEmptKnown = isNew,
+                    WasSolutionKnown = wasSolutionKnown,
+                    WasSuccessful = wasOK,
+                    Image = q.Thumb
+                });
+
+                OnProgressChanged(new ProgressChangedEventArgs()
+                {
+                    Current = (double)matches.Count(m => m.Value.Any(c => c.Value)) / 10
+                });
             }
         }
 
@@ -109,6 +113,16 @@ namespace InsightQuizzer.Core
         {
             NewEmployee?.Invoke(this, e);
         }
+
+        protected virtual void OnProgressChanged(ProgressChangedEventArgs e)
+        {
+            ProgressChanged?.Invoke(this, e);
+        }
+    }
+
+    public class ProgressChangedEventArgs
+    {
+        public double Current { get; set; }
     }
 
     public class UnknownEmployeeEventArgs : EventArgs
@@ -124,6 +138,7 @@ namespace InsightQuizzer.Core
         public bool WasSolutionKnown { get; set; }
 
         public bool WasSuccessful { get; set; }
+        public MemoryStream Image { get; set; }
     }
 
     public class ReturningEmployeeEventArgs : EventArgs

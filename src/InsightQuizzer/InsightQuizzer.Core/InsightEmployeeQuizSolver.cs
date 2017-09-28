@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using System;
+using log4net;
 
 namespace InsightQuizzer.Core
 {
@@ -16,7 +17,10 @@ namespace InsightQuizzer.Core
             this.robot.NewEmployee += RobotOnNewEmployee;
             this.robot.KnownEmployee += RobotOnKnownEmployee;
             this.robot.QuestionResolved += RobotOnQuestionResolved;
+            this.robot.ProgressChanged += RobotOnProgressChanged;
         }
+
+        public QuizRobot Robot => robot;
 
         private void RobotOnQuestionResolved(object sender, QuestionResolvedEventArgs args)
         {
@@ -44,6 +48,11 @@ namespace InsightQuizzer.Core
             {
                 Logger.Warn($"Didn't found a solution for the {(args.WasEmptKnown ?  "new" : "known")} employee");                
             }
+        }
+
+        private void RobotOnProgressChanged(object sender, ProgressChangedEventArgs args)
+        {
+            Logger.Debug($"Made some progress. Amount complete: {(args.Current * 100):F}");
         }
 
         private void RobotOnKnownEmployee(object sender, ReturningEmployeeEventArgs returningEmployeeEventArgs)
