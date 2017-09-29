@@ -1,4 +1,5 @@
-﻿using InsightQuizzer.Core;
+﻿using System;
+using InsightQuizzer.Core;
 
 namespace InsightQuizzer.Jobs
 {
@@ -8,7 +9,14 @@ namespace InsightQuizzer.Jobs
         {
             var solver = new InsightEmployeeQuizSolver();
 
+            solver.Robot.ProgressChanged += Robot_ProgressChanged;
+
             solver.Start();
+        }
+
+        private void Robot_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            Console.WriteLine("##jobbr[progress percent='{0:0.00}']", e.Current);
         }
     }
 }
