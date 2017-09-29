@@ -18,7 +18,7 @@ namespace InsightQuizzer.JobServer
 
             builder.AddJobs(jobRepo =>
             {
-                jobRepo.Define("QuizJob", "InsightQuizzer.JobServer.Jobs.QuizJob")
+                jobRepo.Define("QuizJob", "InsightQuizzer.Jobs.QuizJob")
                     .WithTrigger("* * * * *", noParallelExecution: true);
             });
 
