@@ -2,6 +2,7 @@
 using Jobbr.Execution.InProcess;
 using Jobbr.Server.Builder;
 using Jobbr.Server.JobRegistry;
+using log4net.Config;
 
 namespace InsightQuizzer.JobServer
 {
@@ -9,6 +10,8 @@ namespace InsightQuizzer.JobServer
     {
         public static void Main(string[] args)
         {
+            XmlConfigurator.Configure();
+
             var builder = new JobbrBuilder();
 
             builder.AddInProcessExecutor();
