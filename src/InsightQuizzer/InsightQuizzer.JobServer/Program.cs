@@ -3,6 +3,7 @@ using Jobbr.ArtefactStorage.RavenFS;
 using Jobbr.Server.Builder;
 using Jobbr.Server.ForkedExecution;
 using Jobbr.Server.JobRegistry;
+using Jobbr.Server.WebAPI;
 using Jobbr.Storage.RavenDB;
 using log4net.Config;
 
@@ -38,6 +39,11 @@ namespace InsightQuizzer.JobServer
             {
                 config.Url = "http://localhost:8080";
                 config.FileSystem = "Jobbr";
+            });
+
+            builder.AddWebApi(config =>
+            {
+                config.BackendAddress = "http://localhost:1337";
             });
 
             using (var server = builder.Create())
