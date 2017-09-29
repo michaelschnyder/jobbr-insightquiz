@@ -1,4 +1,5 @@
-﻿using InsightQuizzer.Core.Model;
+﻿using System.IO;
+using InsightQuizzer.Core.Model;
 using RestSharp;
 using RestSharp.Authenticators;
 
@@ -13,7 +14,7 @@ namespace InsightQuizzer.Core
                 var client = new RestClient("http://insight.zuehlke.com");
 
                 // client.Authenticator = new RestSharp.Authenticators.NtlmAuthenticator();
-                client.Authenticator = new HttpBasicAuthenticator("ADS\\mis", Properties.Settings.Default.UserPassword);
+                client.Authenticator = new HttpBasicAuthenticator("ADS\\mis", File.ReadAllText(@"C:\Temp\pass.txt"));
                 var request = new RestRequest("/api/v1/quiz/settings");
                 request.Method = Method.POST;
 
