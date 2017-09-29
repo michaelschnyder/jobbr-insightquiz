@@ -10,7 +10,7 @@ namespace InsightQuizzer.JobServer
         {
             var builder = new JobbrBuilder();
 
-            //JobbrBuilder.AddInProcessExecution();
+            //builder.AddInProcessExecution();
 
             builder.AddJobs(r =>
             {
