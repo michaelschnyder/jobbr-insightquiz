@@ -86,23 +86,24 @@ namespace InsightQuizzer.Core
                     maCode = selected;
                 }
 
+                OnQuestionResolved(new QuestionResolvedEventArgs()
+                {
+                    EmpCode = maCode,
+                    WasEmptKnown = isNew,
+                    WasSolutionKnown = wasSolutionKnown,
+                    WasSuccessful = wasFound,
+                    Image = q.Thumb
+                });
+
                 if (wasFound)
                 {
-                    OnQuestionResolved(new QuestionResolvedEventArgs()
+                    OnProgressChanged(new ProgressChangedEventArgs()
                     {
-                        EmpCode = maCode,
-                        WasEmptKnown = isNew,
-                        WasSolutionKnown = wasSolutionKnown,
-                        WasSuccessful = true,
-                        Image = q.Thumb
+                        Current = (double) matches.Count(m => m.Value.Any(c => c.Value)) / 10
                     });
                 }
-
-                OnProgressChanged(new ProgressChangedEventArgs()
-                {
-                    Current = (double)matches.Count(m => m.Value.Any(c => c.Value)) / 10
-                });
             }
+
         }
 
         protected virtual void OnQuestionResolved(QuestionResolvedEventArgs e)
