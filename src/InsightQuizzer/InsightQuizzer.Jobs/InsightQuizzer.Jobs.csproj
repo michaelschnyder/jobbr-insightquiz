@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A39E440C-353C-43C8-BF05-D692BB857CB6}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>InsightQuizzer.CommandLine</RootNamespace>
-    <AssemblyName>InsightQuizzer.CommandLine</AssemblyName>
+    <ProjectGuid>{9DCDD9EE-F886-4A3B-ABBE-BB5D33C9ED14}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>InsightQuizzer.Jobs</RootNamespace>
+    <AssemblyName>InsightQuizzer.Jobs</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,10 +32,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,16 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuizJob.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\InsightQuizzer.Core\InsightQuizzer.Core.csproj">
-      <Project>{8CC5522E-B0EC-4133-A26E-757023E77C79}</Project>
+      <Project>{8cc5522e-b0ec-4133-a26e-757023e77c79}</Project>
       <Name>InsightQuizzer.Core</Name>
     </ProjectReference>
   </ItemGroup>

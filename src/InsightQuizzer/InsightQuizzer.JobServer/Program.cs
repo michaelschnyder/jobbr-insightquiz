@@ -2,25 +2,27 @@
 using Jobbr.Server.Builder;
 using Jobbr.Server.ForkedExecution;
 using Jobbr.Server.JobRegistry;
+using log4net.Config;
 
 namespace InsightQuizzer.JobServer
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            XmlConfigurator.Configure();
+
             var builder = new JobbrBuilder();
 
-            //builder.AddInProcessExecution();
             builder.AddForkedExecution(config =>
             {
                 config.JobRunDirectory = "C:/temp";
-                config.JobRunnerExecutable = "TODO";
+                config.JobRunnerExecutable = "../../InsightQuizzer.JobRunner/bin/Debug/InsightQuizzer.JobRunner.exe";
             });
 
-            builder.AddJobs(r =>
+            builder.AddJobs(jobRepo =>
             {
-                r.Define("QuizJob", "InsightQuizzer.JobServer.Jobs.QuizJob")
+                jobRepo.Define("QuizJob", "InsightQuizzer.Jobs.QuizJob")
                     .WithTrigger("* * * * *", noParallelExecution: true);
             });
 

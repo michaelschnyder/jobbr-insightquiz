@@ -1,6 +1,6 @@
 ﻿using InsightQuizzer.Core;
 
-namespace InsightQuizzer.JobServer.Jobs
+namespace InsightQuizzer.Jobs
 {
     public class QuizJob
     {

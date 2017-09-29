@@ -1,15 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using InsightQuizzer.Jobs;
+using Jobbr.Runtime;
+using Jobbr.Runtime.ForkedExecution;
+using log4net.Config;
 
 namespace InsightQuizzer.JobRunner
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            XmlConfigurator.Configure();
+
+            var jobAssemblyToQueryJobs = typeof(QuizJob).Assembly;
+
+            var runtime = new ForkedRuntime(new RuntimeConfiguration {JobTypeSearchAssembly = jobAssemblyToQueryJobs});
+
+            runtime.Run(args);
         }
     }
 }
