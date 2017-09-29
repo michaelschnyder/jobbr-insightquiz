@@ -10,10 +10,7 @@ namespace InsightQuizzer.JobServer
         {
             var builder = new JobbrBuilder();
 
-            //JobbrBuilder.AddInProcessExecution(config =>
-            //{
-            //    config.IsRuntimeWaitingForDebugger = true;
-            //});
+            //JobbrBuilder.AddInProcessExecution();
 
             builder.AddJobs(r =>
             {
