@@ -1,5 +1,6 @@
 ﻿using System;
 using Jobbr.Server.Builder;
+using Jobbr.Server.ForkedExecution;
 using Jobbr.Server.JobRegistry;
 
 namespace InsightQuizzer.JobServer
@@ -11,6 +12,11 @@ namespace InsightQuizzer.JobServer
             var builder = new JobbrBuilder();
 
             //builder.AddInProcessExecution();
+            builder.AddForkedExecution(config =>
+            {
+                config.JobRunDirectory = "C:/temp";
+                config.JobRunnerExecutable = "TODO";
+            });
 
             builder.AddJobs(r =>
             {
