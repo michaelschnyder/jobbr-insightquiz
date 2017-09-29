@@ -16,7 +16,7 @@ namespace InsightQuizzer.Jobs
 
         private void Robot_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            Console.WriteLine("##jobbr[progress percent='{0:0.00}']", e.Current);
+            Console.WriteLine("##jobbr[progress percent='{0:0.00}']", e.Current * 100);
         }
     }
 }
