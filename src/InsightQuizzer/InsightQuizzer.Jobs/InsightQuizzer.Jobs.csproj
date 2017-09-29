@@ -50,9 +50,6 @@
     <Compile Include="QuizJob.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\InsightQuizzer.Core\InsightQuizzer.Core.csproj">
       <Project>{8cc5522e-b0ec-4133-a26e-757023e77c79}</Project>
       <Name>InsightQuizzer.Core</Name>
