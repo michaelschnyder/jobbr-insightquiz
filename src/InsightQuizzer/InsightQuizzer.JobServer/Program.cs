@@ -17,7 +17,7 @@ namespace InsightQuizzer.JobServer
             builder.AddForkedExecution(config =>
             {
                 config.JobRunDirectory = "C:/temp";
-                config.JobRunnerExecutable = "../../InsightQuizzer.JobRunner/bin/Debug/InsightQuizzer.JobRunner.exe";
+                config.JobRunnerExecutable = "../../../InsightQuizzer.JobRunner/bin/Debug/InsightQuizzer.JobRunner.exe";
             });
 
             builder.AddJobs(jobRepo =>
