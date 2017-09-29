@@ -1,20 +1,21 @@
 ﻿using System;
+using Jobbr.Execution.InProcess;
 using Jobbr.Server.Builder;
 using Jobbr.Server.JobRegistry;
 
 namespace InsightQuizzer.JobServer
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             var builder = new JobbrBuilder();
 
-            //JobbrBuilder.AddInProcessExecution();
+            builder.AddInProcessExecutor();
 
-            builder.AddJobs(r =>
+            builder.AddJobs(jobRepo =>
             {
-                r.Define("QuizJob", "InsightQuizzer.JobServer.Jobs.QuizJob")
+                jobRepo.Define("QuizJob", "InsightQuizzer.JobServer.Jobs.QuizJob")
                     .WithTrigger("* * * * *", noParallelExecution: true);
             });
 

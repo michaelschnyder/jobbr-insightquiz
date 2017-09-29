@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7DDA3494-FA71-4C9D-9F6C-C97B14CDE935}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>InsightQuizzer.JobServer</RootNamespace>
-    <AssemblyName>InsightQuizzer.JobServer</AssemblyName>
+    <ProjectGuid>{9DCDD9EE-F886-4A3B-ABBE-BB5D33C9ED14}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>InsightQuizzer.Jobs</RootNamespace>
+    <AssemblyName>InsightQuizzer.Jobs</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,28 +32,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Jobbr.ComponentModel.ArtefactStorage, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Jobbr.ComponentModel.ArtefactStorage.1.0.0\lib\net45\Jobbr.ComponentModel.ArtefactStorage.dll</HintPath>
-    </Reference>
-    <Reference Include="Jobbr.ComponentModel.Execution, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Jobbr.ComponentModel.Execution.1.0.0\lib\net45\Jobbr.ComponentModel.Execution.dll</HintPath>
-    </Reference>
-    <Reference Include="Jobbr.ComponentModel.JobStorage, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Jobbr.ComponentModel.JobStorage.1.0.0\lib\net45\Jobbr.ComponentModel.JobStorage.dll</HintPath>
-    </Reference>
-    <Reference Include="Jobbr.ComponentModel.Management, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Jobbr.ComponentModel.Management.1.0.0\lib\net45\Jobbr.ComponentModel.Management.dll</HintPath>
-    </Reference>
-    <Reference Include="Jobbr.ComponentModel.Registration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Jobbr.ComponentModel.Registration.1.0.0\lib\net45\Jobbr.ComponentModel.Registration.dll</HintPath>
-    </Reference>
-    <Reference Include="Jobbr.Execution.InProcess, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Jobbr.Execution.InProcess.1.0.0-unstable3\lib\net45\Jobbr.Execution.InProcess.dll</HintPath>
-    </Reference>
-    <Reference Include="Jobbr.Server, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Jobbr.Server.1.0.0-unstable.469\lib\net45\Jobbr.Server.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -64,16 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuizJob.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\InsightQuizzer.Core\InsightQuizzer.Core.csproj">
-      <Project>{8CC5522E-B0EC-4133-A26E-757023E77C79}</Project>
+      <Project>{8cc5522e-b0ec-4133-a26e-757023e77c79}</Project>
       <Name>InsightQuizzer.Core</Name>
     </ProjectReference>
   </ItemGroup>
