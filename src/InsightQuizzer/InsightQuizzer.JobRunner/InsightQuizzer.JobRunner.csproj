@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Jobbr.Runtime.ForkedExecution, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Jobbr.Runtime.ForkedExecution.1.0.0-rc.1\lib\net45\Jobbr.Runtime.ForkedExecution.dll</HintPath>
+      <HintPath>..\packages\Jobbr.Runtime.ForkedExecution.1.0.0\lib\net45\Jobbr.Runtime.ForkedExecution.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
