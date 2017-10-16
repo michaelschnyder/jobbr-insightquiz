@@ -50,7 +50,7 @@ namespace InsightQuizzer.Core
             }
             else
             {
-                Logger.Warn($"Didn't found a solution for the {(args.WasEmptKnown ?  "new" : "known")} employee");                
+                Logger.Warn($"Didn't find a solution for the {(args.WasEmptKnown ?  "new" : "known")} employee");                
             }
         }
 
